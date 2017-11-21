@@ -18,3 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/oauth/token/login', 'Auth\ProxyController@swapCode');
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/skus', 'Sku\SkuController@store');
+});
